@@ -52,7 +52,7 @@ class MyStreamListener(tweepy.StreamListener):
                  "location":tweet.user.location})
                 # check status
                 if r.status_code == 200:
-                    print('ok data post')
+                    print('ok data post',tweet.user.geo_enabled,tweet.coordinates)
                 else:
                     print('data not posted')
 

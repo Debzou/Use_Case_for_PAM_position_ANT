@@ -2,5 +2,6 @@
 # Pourquoi ?
 # La fonction trend ==> limité a 24h update toute les 5 minutes
 # Choix de faire un flux de stream
+# parce que pas d'API limit
 
 ajout config proxy dans le mextjs
