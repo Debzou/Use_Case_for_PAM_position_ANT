@@ -1,0 +1,100 @@
+:root {
+  --main-footer-color: #27204a;
+  --main-color-txt: white;
+  --main-navbar-color: #3b316d;
+  --main-navbar-color-hover: #260068;
+  --main-navbar-color-txt: gainsboro;
+}
+
+/* GENERAL */
+
+a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+p {
+  color: white !important;
+}
+
+li {
+  color: white !important;
+}
+
+.mainContent {
+  min-height: 100vh;
+}
+
+.title, .subtitle, .label {
+  color: #cad3e8 !important;
+}
+
+/* NAVBAR */
+
+.navitemStyle {
+  background-color: var(--main-navbar-color) !important;
+  color: gainsboro !important;
+}
+
+.isScrolled .navitemStyle {
+  color: gainsboro !important;
+}
+
+.navbar {
+  background-color: var(--main-navbar-color) !important;
+  transition: all 0.3s;
+}
+
+a.navbar-item:hover {
+  background-color: var(--main-navbar-color-hover) !important;
+  color: var(--main-navbar-color-txt) !important;
+}
+
+a.navbar-item:hover .isScrolled {
+  color: var(--main-navbar-color-txt) !important;
+}
+
+.navbar-burger {
+  color: var(--main-navbar-color-txt) !important;
+}
+
+.navbar-burger.is-active {
+  color: var(--main-navbar-color-txt) !important;
+}
+
+.navbar-menu.is-active {
+  background-color: var(--main-navbar-color) !important;
+}
+
+.tabs.is-boxed li.is-active a {
+  background-color: transparent !important;
+}
+
+.navbar-dropdown {
+  border-top: 0px !important;
+}
+
+/* FOOTER */
+
+.footer {
+  position: absolute;
+  color: var(--main-color-txt);
+  width: 100%;
+  height: 5rem; /* FooterComponent height */
+  background-color: var(--main-footer-color) !important;;
+}
+
+.divfooter {
+  height: 150px;
+  overflow: hidden;
+}
+
+.svgfooter {
+  height: 100%;
+  width: 100%;
+}
+
+.pathfooter {
+  stroke: none;
+  fill: var(--main-footer-color);
+}

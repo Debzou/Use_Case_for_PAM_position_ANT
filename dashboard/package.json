@@ -1,0 +1,18 @@
+{
+  "name": "dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "bulma": "^0.9.3",
+    "next": "11.0.1",
+    "react": "17.0.2",
+    "react-bulma-components": "^4.0.7",
+    "react-dom": "17.0.2",
+    "react-router-dom": "^6.0.0-beta.0"
+  }
+}

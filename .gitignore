@@ -6,3 +6,5 @@
 /StreamTwitter/__pycache__
 /API/jsonSerializable/__pycache__
 
+/dashboard/node_modules
+/dashboard/.next
