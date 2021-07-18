@@ -21,7 +21,7 @@ const NavBar = (props) => {
         </Navbar.Brand>
         <Navbar.Menu >
             <Navbar.Container>            
-            <Link href="/" passHref>
+            <Link href={"/"}>
                 <Navbar.Item className="navitemStyle">
                     Home
                 </Navbar.Item>

@@ -58,3 +58,5 @@ def get_hashtag(GRANULARITY):
 
     else:
         return jsonify({'bad syntax' : 'GRANULARITY is only : [minutes , hours , months]'})
+    
+
