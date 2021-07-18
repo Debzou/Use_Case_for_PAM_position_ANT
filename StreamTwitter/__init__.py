@@ -52,7 +52,14 @@ class MyStreamListener(tweepy.StreamListener):
                  "location":tweet.user.location})
                 # check status
                 if r.status_code == 200:
-                    print('ok data post',tweet.user.geo_enabled,tweet.coordinates)
+                    print('===============')
+                    #print(tweet._json)
+                    
+                    print('===============')
+                    if hasattr(tweet, 'retweeted_status'):
+                        print(tweet.quote_count,tweet.retweeted_status.quote_count)
+                    if(tweet.retweet_count >0 or tweet.quote_count>0 or tweet.reply_count>0 or tweet.favorite_count>0):
+                        print('ok data post',tweet,tweet.retweet_count,tweet.quote_count,tweet.reply_count,tweet.favorite_count )
                 else:
                     print('data not posted')
 
