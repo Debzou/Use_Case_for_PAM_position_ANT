@@ -4,6 +4,7 @@
   --main-navbar-color: #3b316d;
   --main-navbar-color-hover: #260068;
   --main-navbar-color-txt: gainsboro;
+  --main-heading-txt:#27204a;
 }
 
 /* GENERAL */
@@ -26,7 +27,11 @@ li {
 }
 
 .title, .subtitle, .label {
-  color: #cad3e8 !important;
+  color: var(--main-heading-txt) !important;
+}
+
+body{
+  background-color: #cad3e8 !important;
 }
 
 /* NAVBAR */
