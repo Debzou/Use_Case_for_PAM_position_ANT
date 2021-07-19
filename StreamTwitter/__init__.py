@@ -42,15 +42,20 @@ class MyStreamListener(tweepy.StreamListener):
     # get only hastage 
     def on_status(self, tweet):
         
+        # post location
         if tweet.coordinates != None:
+            print(tweet.coordinates)
             # post location
-            pass
+            response = requests.post(os.environ.get("url_post_location"),json={'location':str(tweet.coordinates)})
+            if response.status_code !=200:
+                print('Error post')
+        # post tweet relevant
         if hasattr(tweet, 'retweeted_status') :
             wordList = tweet.retweeted_status.text.split(' ')
             hastageList = []
             # filter tweet
             # only RT > 20000 retweet
-            if tweet.retweeted_status.retweet_count>100:
+            if tweet.retweeted_status.retweet_count>1000:
                 for word in wordList:
                     # find the '#'
                     if  re.search("^#.*", word):
@@ -58,7 +63,7 @@ class MyStreamListener(tweepy.StreamListener):
                         hastageList.append(word)
                 if hastageList != []:
                     # post data
-                    response = requests.post(os.environ.get("url_post"), 
+                    response = requests.post(os.environ.get("url_post_tweet"), 
                         json={
                         'timestamp': int(tweet.timestamp_ms),
                         'hastageList': hastageList, 
@@ -66,13 +71,7 @@ class MyStreamListener(tweepy.StreamListener):
                         'retweet_count':tweet.retweeted_status.retweet_count,
                         'favorite_count':tweet.retweeted_status.favorite_count
                         })
-                    print({
-                        'timestamp': int(tweet.timestamp_ms),
-                        'hastageList': str(hastageList), 
-                        'text':tweet.text,
-                        'retweet_count':int(tweet.retweeted_status.retweet_count),
-                        'favorite_count':int(tweet.retweeted_status.favorite_count)
-                        })
+                    print(tweet.timestamp_ms)
                     if(response.status_code !=200):
                         print('Error post')
                   

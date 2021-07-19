@@ -11,3 +11,4 @@ app = Flask(__name__)
 # import routes & controllers
 from app import index
 from app import tweet
+from app import locationTweet
