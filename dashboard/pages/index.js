@@ -2,8 +2,8 @@ import styles from '../styles/Home.module.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TagCloud } from 'react-tagcloud';
-import {Columns, Container, Section, Heading} from 'react-bulma-components';
-import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+import { Container, Section, Heading} from 'react-bulma-components';
+import { ComposableMap, Geographies, Geography, Marker ,Graticule} from "react-simple-maps";
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
@@ -68,13 +68,13 @@ const CustomWordCloud = (tag, size, color) => (
 const Home = () => {
   // hook
   const [tweet, setTweet] = useState([]);
-  const [granularity,setGranularity] = useState('minutes');
   
   // init 
   // get tweet
   useEffect(async() => {
-    const response = (await axios.get(`/api/hastage/${granularity}`)).data;
+    const response = (await axios.get(`/api/location`)).data;
     setTweet(response);
+    console.log(eval(response));
   }, []);
 
   // render HTML
@@ -82,27 +82,23 @@ const Home = () => {
     <>
       <Section>
         <Container>
-          <Heading subtitle>Dashboard</Heading>
-          <Columns>
-            
-            <Columns.Column >
-              <TagCloud tags={data} minSize={1} maxSize={5} renderer={CustomWordCloud} />
-            </Columns.Column>
-            <Columns.Column size={8}>
-            <ComposableMap>
-              <Geographies geography={geoUrl} fill="#260068" stroke="white">
+            <center><Heading>Tweet world map</Heading>
+            <ComposableMap style={{height:"45em"}}>
+              <Graticule stroke="#E4E5E6" strokeWidth={0.5} />
+              <Geographies geography={geoUrl} fill="#260068" stroke="#cad3e8">
                 {({ geographies }) =>
                   geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
                 }
               </Geographies>
-              {markers.map(({ name, coordinates }) => (
-                <Marker key={name} coordinates={coordinates}>
+              {/* {tweet.map(({ coordinates }) => (
+                <Marker 
+                coordinates={coordinates} 
+                >
                   <circle r={1} fill="#F00" stroke="#F00" strokeWidth={2} />
                 </Marker>
-              ))}
-              </ComposableMap>
-            </Columns.Column>
-          </Columns>
+              ))} */}
+              </ComposableMap></center>
+        
         </Container>
       </Section>
     </>
