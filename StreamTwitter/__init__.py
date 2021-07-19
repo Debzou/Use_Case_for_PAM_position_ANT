@@ -41,28 +41,41 @@ class MyStreamListener(tweepy.StreamListener):
     # @overide function on_status
     # get only hastage 
     def on_status(self, tweet):
-        wordList = tweet.text.split(' ')
-        for word in wordList:
-            # find the '#'
-            if  re.search("^#.*", word):
-                # post data via API
-                r = requests.post(os.environ.get("url_post"), 
-                json={"timestamp": int(tweet.timestamp_ms),
-                 "tag": word, 
-                 "location":tweet.user.location})
-                # check status
-                if r.status_code == 200:
-                    print('===============')
-                    #print(tweet._json)
-                    
-                    print('===============')
-                    if hasattr(tweet, 'retweeted_status'):
-                        print(tweet.quote_count,tweet.retweeted_status.quote_count)
-                    if(tweet.retweet_count >0 or tweet.quote_count>0 or tweet.reply_count>0 or tweet.favorite_count>0):
-                        print('ok data post',tweet,tweet.retweet_count,tweet.quote_count,tweet.reply_count,tweet.favorite_count )
-                else:
-                    print('data not posted')
-
+        
+        if tweet.coordinates != None:
+            # post location
+            pass
+        if hasattr(tweet, 'retweeted_status') :
+            wordList = tweet.retweeted_status.text.split(' ')
+            hastageList = []
+            # filter tweet
+            # only RT > 20000 retweet
+            if tweet.retweeted_status.retweet_count>100:
+                for word in wordList:
+                    # find the '#'
+                    if  re.search("^#.*", word):
+                        # add '#' to the list
+                        hastageList.append(word)
+                if hastageList != []:
+                    # post data
+                    response = requests.post(os.environ.get("url_post"), 
+                        json={
+                        'timestamp': int(tweet.timestamp_ms),
+                        'hastageList': hastageList, 
+                        'text':tweet.text,
+                        'retweet_count':tweet.retweeted_status.retweet_count,
+                        'favorite_count':tweet.retweeted_status.favorite_count
+                        })
+                    print({
+                        'timestamp': int(tweet.timestamp_ms),
+                        'hastageList': str(hastageList), 
+                        'text':tweet.text,
+                        'retweet_count':int(tweet.retweeted_status.retweet_count),
+                        'favorite_count':int(tweet.retweeted_status.favorite_count)
+                        })
+                    if(response.status_code !=200):
+                        print('Error post')
+                  
 
     # @overide function on_error
     def on_error(self, status):
@@ -74,7 +87,7 @@ twitterAPI = TwitterAPI()
 tweets_listener = MyStreamListener(twitterAPI.getAPI())
 stream = tweepy.Stream(twitterAPI.getAPI().auth, tweets_listener)
 # filter the stream
-stream.filter(track=os.environ.get("tracker"))
+stream.filter(track=os.environ.get("tracker"),languages=["en","fr"])
 
 
 

@@ -10,10 +10,12 @@ from datetime import datetime, timedelta
 def post_hashtag():
     # get information
     timestamp = request.json['timestamp']
-    tag = request.json['tag']
-    location=request.json['location']
+    hastageList = request.json['hastageList']
+    text = request.json['text']
+    retweet_count = request.json['retweet_count']
+    favorite_count = request.json['favorite_count']
     # insert in collection
-    hashtag_collection.insert({'timestamp': timestamp, 'tag': tag, 'location':location})
+    hashtag_collection.insert({'timestamp': int(timestamp), 'hastageList': hastageList, 'text':text,'retweet_count':retweet_count,'favorite_count':favorite_count})
     return jsonify({'result' : 'done'})
 
 
