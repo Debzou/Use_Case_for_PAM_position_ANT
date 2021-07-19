@@ -44,9 +44,9 @@ class MyStreamListener(tweepy.StreamListener):
         
         # post location
         if tweet.coordinates != None:
-            print(tweet.coordinates)
+            print(tweet.coordinates['coordinates'])
             # post location
-            response = requests.post(os.environ.get("url_post_location"),json={'location':str(tweet.coordinates)})
+            response = requests.post(os.environ.get("url_post_location"),json={'location':str(tweet.coordinates['coordinates'])})
             if response.status_code !=200:
                 print('Error post')
         # post tweet relevant

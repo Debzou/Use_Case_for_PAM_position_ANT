@@ -73,8 +73,10 @@ const Home = () => {
   // get tweet
   useEffect(async() => {
     const response = (await axios.get(`/api/location`)).data;
-    setTweet(response);
-    console.log(eval(response));
+    setTweet(response.result);
+    tweet.forEach((e)=>{
+      console.log(eval(JSON.parse(e).location));
+    })
   }, []);
 
   // render HTML
@@ -83,20 +85,21 @@ const Home = () => {
       <Section>
         <Container>
             <center><Heading>Tweet world map</Heading>
-            <ComposableMap style={{height:"45em"}}>
+            <ComposableMap style={{height:"80vh"}}>
               <Graticule stroke="#E4E5E6" strokeWidth={0.5} />
               <Geographies geography={geoUrl} fill="#260068" stroke="#cad3e8">
                 {({ geographies }) =>
                   geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
                 }
               </Geographies>
-              {/* {tweet.map(({ coordinates }) => (
+              {tweet.map(element => (
+                
                 <Marker 
-                coordinates={coordinates} 
+                coordinates={eval(JSON.parse(element).location)} 
                 >
-                  <circle r={1} fill="#F00" stroke="#F00" strokeWidth={2} />
+                  <circle r={3} fill="red" stroke="red" strokeWidth={2} />
                 </Marker>
-              ))} */}
+              ))}
               </ComposableMap></center>
         
         </Container>
