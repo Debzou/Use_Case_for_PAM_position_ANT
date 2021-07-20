@@ -16,20 +16,19 @@ const Tweet = () => {
     // init 
     // get tweet
     useEffect(async() => {
-        
+        // get data
+        // map reduce
         try{
             const response = (await axios.get(`/api/hastage/${granularity}`)).data;
             setTweetWord(response.result);
             let hastageValided = []
             response.result.forEach(element=>{
-            const json = JSON.parse(element)
-            
+            const json = JSON.parse(element);
             json.hastageList.forEach(sub_element=>{
                 if (sub_element in hastageValided){
-                    console.log(sub_element)
-                    hastageValided[sub_element] += 1;
+                    hastageValided[sub_element].count+=1;
                 }else{
-                    hastageValided[sub_element]=0;
+                    hastageValided[sub_element]={value:sub_element,count:1};
                 }
             })
             
