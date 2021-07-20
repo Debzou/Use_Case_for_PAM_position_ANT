@@ -54,9 +54,6 @@ const Home = () => {
   useEffect(async() => {
     const response = (await axios.get(`/api/location`)).data;
     setTweet(response.result);
-    tweet.forEach((e)=>{
-      console.log(eval(JSON.parse(e).location));
-    })
   }, []);
 
   // render HTML

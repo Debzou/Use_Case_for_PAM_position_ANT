@@ -25,7 +25,12 @@ const NavBar = (props) => {
                 <Navbar.Item className="navitemStyle">
                     Home
                 </Navbar.Item>
-            </Link>        
+            </Link>
+            <Link href={"/tweet"}>
+                <Navbar.Item className="navitemStyle">
+                    Tweet
+                </Navbar.Item>
+            </Link>         
             </Navbar.Container>
         </Navbar.Menu>
         </Navbar>
