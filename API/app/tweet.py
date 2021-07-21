@@ -9,13 +9,14 @@ from datetime import datetime, timedelta
 @app.route("/hastage",methods=['POST'])
 def post_hashtag():
     # get information
+    name = request.json['name']
     timestamp = request.json['timestamp']
     hastageList = request.json['hastageList']
     text = request.json['text']
     retweet_count = request.json['retweet_count']
     favorite_count = request.json['favorite_count']
     # insert in collection
-    hashtag_collection.insert({'timestamp': int(timestamp), 'hastageList': hastageList, 'text':text,'retweet_count':retweet_count,'favorite_count':favorite_count})
+    hashtag_collection.insert({'name':name,'timestamp': int(timestamp), 'hastageList': hastageList, 'text':text,'retweet_count':retweet_count,'favorite_count':favorite_count})
     return jsonify({'result' : 'done'})
 
 

@@ -65,13 +65,14 @@ class MyStreamListener(tweepy.StreamListener):
                     # post data
                     response = requests.post(os.environ.get("url_post_tweet"), 
                         json={
+                        'name':tweet.retweeted_status.user.name,
                         'timestamp': int(tweet.timestamp_ms),
                         'hastageList': hastageList, 
                         'text':tweet.retweeted_status.text,
                         'retweet_count':tweet.retweeted_status.retweet_count,
                         'favorite_count':tweet.retweeted_status.favorite_count
                         })
-                    print(tweet.retweeted_status.text)
+                    print(tweet.retweeted_status.user.name)
                     if(response.status_code !=200):
                         print('Error post')
                   

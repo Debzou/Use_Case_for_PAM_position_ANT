@@ -11,5 +11,5 @@ clientMongo = MongoClient(os.environ.get("mongodb://localhost:27017/"))
 # get database
 database_tweet = clientMongo.database_tweet
 # get collection
-hashtag_collection = database_tweet.test_collection
+hashtag_collection = database_tweet.hashtag_collection
 location_collection = database_tweet.location_collection
