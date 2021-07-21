@@ -20,7 +20,7 @@ Mais aussi de faire un nuage de mot sur les tweets les plus pertinant ( en fonct
 
 # Architecture global 
 
-![archi](architecture.png.png)
+![archi](architecture.png)
 # Notice 
 
 
