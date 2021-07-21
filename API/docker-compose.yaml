@@ -15,6 +15,11 @@ services:
       - mongodbdata:/data/db
     ports:
       - '27017:27017'
+  stream:
+    container_name: stream
+    restart: always
+    build: ../StreamTwitter
+    network_mode: host
 volumes:
   mongodbdata:
     driver: local
