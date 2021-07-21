@@ -1,8 +1,8 @@
 import { TagCloud } from 'react-tagcloud';
-import {Section,Container,Columns,Card,Media,Heading,Content,Image} from 'react-bulma-components';
+import Styles  from '../../styles/tweet.module.css';
+import {Section,Container,Columns,Card,Media,Heading,Content,Image, Button} from 'react-bulma-components';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-
 
 const customTagWord = (tag, size, color) => (
     <span
@@ -131,9 +131,21 @@ const Tweet = () => {
                                         </Media>      
                                     </Columns.Column>
                             </Columns>
+                            <Button className={Styles.btn}>
+                            months
+                    </Button>             
+                    
+                    <Button className={Styles.btn}>
+                        hours
+                    </Button>
+                    
+                    <Button className={Styles.btn}>
+                        days
+                    </Button>
                             </Content>
                         </Card.Content>
-                    </Card>
+                    </Card> 
+
                 </Columns.Column>
             </Columns>
             
