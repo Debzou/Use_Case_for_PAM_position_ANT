@@ -22,15 +22,13 @@ const customTagWord = (tag, size, color) => (
 const Tweet = () => {
     // hook
     const [listHastage, setListHastage] = useState([]);
-    const [granularity,setGranularity] = useState('months');
     const [bestTweet, setbestTweet] = useState({});
-    // init 
-    // get tweet
-    useEffect(async() => {
+
+    const changedGranularity = async(gran) =>{
         // get data
         // map reduce
       
-        const response = (await axios.get(`/api/hastage/${granularity}`)).data;
+        const response = (await axios.get(`/api/hastage/${gran}`)).data;
     
         // using for reducing
         let hastageValided = [];
@@ -64,6 +62,13 @@ const Tweet = () => {
         setListHastage(dataFormated);
         setbestTweet(bestTweetTMP);
         console.log(bestTweetTMP);
+    }
+    // init 
+    // get tweet
+    useEffect(async() => {
+        // get data
+        // map reduce
+        changedGranularity('months')
     }, []);
 
     return(
@@ -131,17 +136,15 @@ const Tweet = () => {
                                         </Media>      
                                     </Columns.Column>
                             </Columns>
-                            <Button className={Styles.btn}>
-                            months
-                    </Button>             
-                    
-                    <Button className={Styles.btn}>
-                        hours
-                    </Button>
-                    
-                    <Button className={Styles.btn}>
-                        days
-                    </Button>
+                                <Button className={Styles.btn} onClick={()=>changedGranularity('months')}>
+                                    months
+                                </Button> 
+                                <Button className={Styles.btn} onClick={()=>changedGranularity('hours')}>
+                                    hours
+                                </Button>
+                                <Button className={Styles.btn} onClick={()=>changedGranularity('minutes')}>
+                                    minutes
+                                </Button>
                             </Content>
                         </Card.Content>
                     </Card> 
