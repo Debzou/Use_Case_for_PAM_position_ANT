@@ -20,7 +20,9 @@ Mais aussi de faire un nuage de mot sur les tweets les plus pertinant ( en fonct
 
 # Architecture global 
 
+(dashboard_bottom_part.png)
 # Notice 
+
 
 
 
