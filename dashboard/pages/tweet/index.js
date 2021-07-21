@@ -18,33 +18,46 @@ const Tweet = () => {
     useEffect(async() => {
         // get data
         // map reduce
-        try{
-            const response = (await axios.get(`/api/hastage/${granularity}`)).data;
-            setTweetWord(response.result);
-            let hastageValided = []
-            response.result.forEach(element=>{
+      
+        const response = (await axios.get(`/api/hastage/${granularity}`)).data;
+        // add data
+        setTweetWord(response.result);
+        // using for the reducing
+        let hastageValided = [];
+        // mapping data
+        response.result.forEach(element=>{
+
             const json = JSON.parse(element);
+
             json.hastageList.forEach(sub_element=>{
                 if (sub_element in hastageValided){
-                    hastageValided[sub_element].count+=1;
+                    // reducing
+                    hastageValided[sub_element]+=1;
                 }else{
-                    hastageValided[sub_element]={value:sub_element,count:1};
+                    hastageValided[sub_element]=1;
                 }
-            })
-            
+            });
         });
-        setListHastage(hastageValided);
-        console.log(hastageValided)
-        }catch{
-            console.log('erro get : /api/hastage/${granularity}')
-        }
 
+        const dataFormated = []
+        // Formating data
+        for (const property in hastageValided) {
+            dataFormated.push({value:property,count:hastageValided[property]})
+        }
+        setListHastage(dataFormated);
+        console.log(dataFormated);
+    
     }, []);
 
     return(
         <>
         <Section>
             <Container>
+            <TagCloud
+                minSize={10}
+                maxSize={35}
+                tags={listHastage.sort().slice(0, 20)}
+            />
             </Container>
         </Section>
         </>

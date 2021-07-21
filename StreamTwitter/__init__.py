@@ -67,11 +67,11 @@ class MyStreamListener(tweepy.StreamListener):
                         json={
                         'timestamp': int(tweet.timestamp_ms),
                         'hastageList': hastageList, 
-                        'text':tweet.text,
+                        'text':tweet.retweeted_status.text,
                         'retweet_count':tweet.retweeted_status.retweet_count,
                         'favorite_count':tweet.retweeted_status.favorite_count
                         })
-                    print(tweet.timestamp_ms)
+                    print(tweet.retweeted_status.text)
                     if(response.status_code !=200):
                         print('Error post')
                   
