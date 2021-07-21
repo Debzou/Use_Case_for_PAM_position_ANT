@@ -7,7 +7,7 @@ load_dotenv()
 import os
 
 # start mongoDB
-clientMongo = MongoClient(os.environ.get("mongodb://localhost:27017/"))
+clientMongo = MongoClient(os.environ.get("url_mongodb"))
 # get database
 database_tweet = clientMongo.database_tweet
 # get collection
