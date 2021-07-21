@@ -87,7 +87,7 @@ twitterAPI = TwitterAPI()
 tweets_listener = MyStreamListener(twitterAPI.getAPI())
 stream = tweepy.Stream(twitterAPI.getAPI().auth, tweets_listener)
 # filter the stream
-stream.filter(track=os.environ.get("tracker"),languages=["en","fr"])
+stream.filter(track=['macron','passsanitaire','france'],languages=["en","fr"])
 
 
 
