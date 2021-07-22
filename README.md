@@ -35,24 +35,12 @@ But also to make a word cloud on the most relevant tweets (according to the mont
 
 # Notice 
 
-## Start API & Stream via docker compose :star:
-
-It will start the API, the Stream and Mongodb 
+## Start project :star:
 
 ```sh
-cd API
 docker-compose up --build
 ```
 
-## Start Frontend :star:
-
-mode dev
-```sh
-npm install
-npm run dev 
-```
-
-POURQUOI mettre sur deux server different ??
 
 # Dashboard 
 ![Dashboard](dashboard_part_1.png)
