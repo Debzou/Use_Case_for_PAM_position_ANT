@@ -8,6 +8,8 @@ services:
       - mongo
     networks:
       - project
+    ports:
+      - '5000:5000'
   mongo:
     container_name: mongo
     image: mongo
