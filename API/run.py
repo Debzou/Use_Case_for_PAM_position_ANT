@@ -8,15 +8,14 @@ load_dotenv()
 import os
 
 ################################
+################################
 #     import configuration     #
 ################################
-url = os.environ.get("url_api")
 port = os.environ.get("port_api")
-debug = os.environ.get("debug")
 
 ################################
 #      RUN API : flask run     #
 ################################
 if __name__ == "__main__":
-    app.run(host=url,port=port,debug=True)
+    app.run(host='0.0.0.0',port=port,debug=True)
 
