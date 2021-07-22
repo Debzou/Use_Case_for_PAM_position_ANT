@@ -1,6 +1,5 @@
 /API/app/__pycache__
 /venv
-/API/.env
 /API/mining/__pycache__
 /API/MongoDB/__pycache__
 /StreamTwitter/__pycache__

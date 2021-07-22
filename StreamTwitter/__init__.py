@@ -76,18 +76,16 @@ class MyStreamListener(tweepy.StreamListener):
                     if(response.status_code !=200):
                         print('Error post')
                   
-
     # @overide function on_error
     def on_error(self, status):
         print("Error detected")
 
-
-  # create object tweepy
+# create object tweepy
 twitterAPI = TwitterAPI()  
 tweets_listener = MyStreamListener(twitterAPI.getAPI())
 stream = tweepy.Stream(twitterAPI.getAPI().auth, tweets_listener)
 # filter the stream
-stream.filter(track=['macron','passsanitaire','france'],languages=["en","fr"])
+stream.filter(track=['macron','passsanitaire','france','vaccin'],languages=["en","fr"])
 
 
 
