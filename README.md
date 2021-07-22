@@ -10,7 +10,7 @@ The received stream contains a large amount of data (tweet). That's why I focuse
 
 On the other hand, the location is retrieved from all tweets (appropriate or not) in order to make a tweeter map and thus be able to do deep analysis.
 
-Then I store the relevant tweets and locations in a NoSql database (MongoDB type)
+Then I stored the relevant tweets and locations in a NoSql database (MongoDB)
 
 # Objective 2: Creation of the API
 
@@ -27,7 +27,7 @@ The API allows to communicate with the database
 # Objective 3: The fontend
 
 Creation of a dashboard that displays all the tweets on a map. 
-But also to make a word cloud on the most relevant tweets (according to the month, hour and minute)
+But also to make a word cloud about the most relevant tweets (according to the month, hour and minute)
 
 # Global architecture 
 
