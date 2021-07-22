@@ -3,7 +3,7 @@ services:
   api:
     container_name: api
     restart: always
-    build: .
+    build: ./API
     ports:
       - '5000:5000'
     links:
@@ -18,7 +18,12 @@ services:
   stream:
     container_name: stream
     restart: always
-    build: ../StreamTwitter
+    build: ./StreamTwitter
+    network_mode: host
+  webiste:
+    container_name: webiste
+    restart: always
+    build: ./dashboard
     network_mode: host
 volumes:
   mongodbdata:
