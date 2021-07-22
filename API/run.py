@@ -8,11 +8,10 @@ load_dotenv()
 import os
 
 ################################
+################################
 #     import configuration     #
 ################################
-url = os.environ.get("url_api")
 port = os.environ.get("port_api")
-debug = os.environ.get("debug")
 
 ################################
 #      RUN API : flask run     #
