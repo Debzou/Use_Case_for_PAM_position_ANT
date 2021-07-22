@@ -18,5 +18,5 @@ debug = os.environ.get("debug")
 #      RUN API : flask run     #
 ################################
 if __name__ == "__main__":
-    app.run(host=url,port=port,debug=True)
+    app.run(host='0.0.0.0',port=port,debug=True)
 
