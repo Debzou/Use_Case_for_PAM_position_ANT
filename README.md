@@ -29,6 +29,8 @@ The API allows to communicate with the database
 Creation of a dashboard that displays all the tweets on a map. 
 But also to make a word cloud about the most relevant tweets (according to the month, hour and minute)
 
+localhost:3000
+
 # Global architecture 
 
 ![archi](architecture.png)
@@ -40,6 +42,10 @@ But also to make a word cloud about the most relevant tweets (according to the m
 ```sh
 docker-compose up --build
 ```
+
+localhost:5000 --> API
+
+localhost:3000 --> Website
 
 # Dashboard screen
 
