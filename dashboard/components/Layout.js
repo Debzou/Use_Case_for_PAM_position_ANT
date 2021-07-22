@@ -1,7 +1,7 @@
 
 import NavBar from './NavBar';
 import Footer from './Footer';
-import Svgfooter from './SvgFooter';
+import Svgfooter from './Svgfooter';
 
 const Layout = ({children}) => {
 
