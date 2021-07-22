@@ -41,7 +41,6 @@ But also to make a word cloud on the most relevant tweets (according to the mont
 docker-compose up --build
 ```
 
-
 # Dashboard 
 ![Dashboard](dashboard_part_1.png)
 ![Dashboard](dashboard_part_2.png)
